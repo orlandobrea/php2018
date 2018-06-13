@@ -5,3 +5,8 @@
 * Tarea 1
 * Tarea 2
 * Tarea 3
+
+
+### 14/06/2018
+
+* Tarea 1 del dia
