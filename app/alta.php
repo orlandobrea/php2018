@@ -24,22 +24,46 @@
     // CONSULTA LA PRIMER TABLA
     $resultado_consulta_TABPRODUCTO = mysqli_query($conexion, "select * from producto where id = '$id'");
     $vector_fila = mysqli_fetch_array($resultado_consulta_TABPRODUCTO);
-    
+
     $tit = $vector_fila["titulo"];
     $precio = $vector_fila["precio"];
 
     // CONSULTA LA SEGUNDA TABLA
-    $resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP = mysqli_query($conexion, "select * from producto_caracteristica_ampliada where id = '$id'");
-    $vector_fila = mysqli_fetch_array($resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP);
-
-
-    echo $tit;
-    echo $precio;
-
-
-
-
+        $resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP = mysqli_query($conexion, "select * from producto_caracteristica_ampliada where producto_id = '$id'");
     ?>
+    
+    <div class="container-fluid">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h1 class="display-4">
+              Paquete <?php echo $tit; ?>
+            </h1>              
+          </div>
+          <div class="col-md-6 text-center">
+            <h1 class="display-4">
+              $<?php echo $precio; ?>
+            </h1>
+          </div>
+          </div>
+      </div>
+
+      <ul style="font-size: 24px;">
+      <?php 
+        while ($r = mysqli_fetch_array($resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP)) {
+        echo "<li>";
+        echo $r["detalle"];
+        echo "</li>";
+      };
+       ?>
+     </ul>
+
+
+
+
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
