@@ -25,5 +25,9 @@ html {
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
 body {
+<<<<<<< HEAD
+	background: #fff;
+=======
 	background: white;
+>>>>>>> f6d62393e918ef07a129d973e8d8521f82944d18
 }
