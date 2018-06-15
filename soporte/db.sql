@@ -73,4 +73,4 @@ INSERT INTO `producto_caracteristica_ampliada` (`id`, `producto_id`, `detalle`) 
 (16,	3,	'Bonificación 10% por pago anual'),
 (17,	2,	'Bonificación 3% pago anual');
 
--- 2018-06-13 16:28:42
+-- 2018-06-13 16:28:42 --
