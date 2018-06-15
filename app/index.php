@@ -5,7 +5,6 @@ require("conexion.php");
 $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 
-
 ?>
 
 <!doctype html>
@@ -46,177 +45,71 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     <div class="container">
       <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <?php
+        <?php
+        $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $obtenerTablas = mysqli_query($conexion, "select * from producto");
+        $cantidadTarjetas = mysqli_num_rows($obtenerTablas);
+        
+        for ($i=1; $i <= $cantidadTarjetas ; $i++) {
 
-              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+        echo '<div class="card mb-4 box-shadow">
+          <div class="card-header">';
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
                 echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
               }
 
       
-              ?>
             
+          echo '  
           </div>
-          <div class="card-body">
+          <div class="card-body">';
 
-            <?php
+            
 
 
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
                 echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
               }
 
       
-              ?>
-           
+            
+           echo '
 
-            <ul class="list-unstyled mt-3 mb-4">
-              <?php
+            <ul class="list-unstyled mt-3 mb-4">';
+             
 
               $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=1");
+              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
                 echo '<li>'.$dato['detalle'].'</li>';
               }
 
       
-              ?>
-            </ul>
-             <?php
+            echo '
+            </ul>';
+            
 
 
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<a href="alta.php?id=1" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
+                echo '<a href="alta.php?id=$i" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
               }
 
       
-              ?>
-            
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <?php
-
-              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
-              }
-              ?>
-            
-          </div>
-          <div class="card-body">
-             <?php
-
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
-              }
-
-      
-              ?>
-            
-            <ul class="list-unstyled mt-3 mb-4">
-
-              <?php
-
-              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=2");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<li>'.$dato['detalle'].'</li>';
-              }
-
-      
-              ?>
               
-            </ul>
-            <?php
-
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<a href="alta.php?id=2" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
-              }
-
-      
-              ?>
+          echo '  
           </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-
-            <?php
-
-              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
-              }      
-              ?>
-            
-          </div>
-          <div class="card-body">
-             <?php
-
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
-              }
-
-      
-              ?>
-            <ul class="list-unstyled mt-3 mb-4">
-
-              <?php
-
-              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=3");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<li>'.$dato['detalle'].'</li>';
-              }
-
-      
-              ?>
-              
-            </ul>
-            <?php
-
-
-              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
-
-              while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<a href="alta.php?id=3" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
-              }
-
-      
-              ?>
-          </div>
-        </div>
+        </div>'; }
+        ?>
       </div>
 
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
