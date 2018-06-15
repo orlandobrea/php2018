@@ -47,14 +47,14 @@ INSERT INTO `producto_caracteristica` (`id`, `producto_id`, `detalle`) VALUES
 DROP TABLE IF EXISTS `producto_caracteristica_ampliada`;
 CREATE TABLE `producto_caracteristica_ampliada` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `producto` int(10) unsigned NOT NULL,
+  `producto_id` int(10) unsigned NOT NULL,
   `detalle` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `producto` (`producto`),
   CONSTRAINT `producto_caracteristica_ampliada_ibfk_1` FOREIGN KEY (`producto`) REFERENCES `producto` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
-INSERT INTO `producto_caracteristica_ampliada` (`id`, `producto`, `detalle`) VALUES
+INSERT INTO `producto_caracteristica_ampliada` (`id`, `producto_id`, `detalle`) VALUES
 (1,	1,	'1 Usuario incluido'),
 (2,	1,	'2GB de capacidad'),
 (3,	1,	'Soporte no incluido'),
