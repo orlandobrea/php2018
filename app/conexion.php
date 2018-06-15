@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <?php 
-=======
- <?php 
 >>>>>>> f6d62393e918ef07a129d973e8d8521f82944d18
 const DB_HOST = '127.0.0.1';
 const DB_USER = 'root';
