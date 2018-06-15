@@ -35,6 +35,7 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a>
       </nav>
+
       <a class="btn btn-outline-primary" href="#">Sign up</a>
     </div>
 
@@ -62,7 +63,19 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+
+            <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
+              }
+
+      
+              ?>
+           
 
             <ul class="list-unstyled mt-3 mb-4">
               <?php
@@ -78,7 +91,18 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
       
               ?>
             </ul>
-            <a href="alta.php?id=1" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</a>
+             <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<a href="alta.php?id=1" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
+              }
+
+      
+              ?>
+            
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -96,7 +120,18 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+             <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
+              }
+
+      
+              ?>
+            
             <ul class="list-unstyled mt-3 mb-4">
 
               <?php
@@ -113,7 +148,17 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
               ?>
               
             </ul>
-            <a href="alta.php?id=2" class="btn btn-lg btn-block btn-primary">Get started</a>
+            <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<a href="alta.php?id=2" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
+              }
+
+      
+              ?>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -132,7 +177,17 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+             <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h1 class="card-title pricing-card-title">$'.$dato['precio'].' <small class="text-muted">/ mo</small></h1>';
+              }
+
+      
+              ?>
             <ul class="list-unstyled mt-3 mb-4">
 
               <?php
@@ -149,7 +204,17 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
               ?>
               
             </ul>
-            <a href="alta.php?id=3" class="btn btn-lg btn-block btn-primary">Contact us</a>
+            <?php
+
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<a href="alta.php?id=3" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
+              }
+
+      
+              ?>
           </div>
         </div>
       </div>
