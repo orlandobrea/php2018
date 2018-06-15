@@ -50,7 +50,7 @@ CREATE TABLE `producto_caracteristica_ampliada` (
   `producto_id` int(10) unsigned NOT NULL,
   `detalle` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `producto` (`producto`),
+  KEY `producto_id` (`producto_id`),
   CONSTRAINT `producto_caracteristica_ampliada_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
