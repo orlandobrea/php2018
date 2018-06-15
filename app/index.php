@@ -1,3 +1,13 @@
+<?php
+
+require("conexion.php");
+
+$conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,47 +47,109 @@
       <div class="card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Free</h4>
+            <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=1");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
+              }
+
+      
+              ?>
+            
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+
             <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
+              <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=1");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<li>'.$dato['detalle'].'</li>';
+              }
+
+      
+              ?>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+            <a href="alta.php?id=1" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</a>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
+            <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=2");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
+              }
+              ?>
+            
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
+
+              <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=2");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<li>'.$dato['detalle'].'</li>';
+              }
+
+      
+              ?>
+              
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+            <a href="alta.php?id=2" class="btn btn-lg btn-block btn-primary">Get started</a>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
+
+            <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto where id=3");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<h4 class="my-0 font-weight-normal">'.$dato['titulo'].'</h4>';
+              }      
+              ?>
+            
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
+
+              <?php
+
+              $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+              $obtenerTablas = mysqli_query($conexion, "select * from producto_caracteristica where producto_id=3");
+
+              while ($dato = mysqli_fetch_array($obtenerTablas)) {
+                echo '<li>'.$dato['detalle'].'</li>';
+              }
+
+      
+              ?>
+              
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+            <a href="alta.php?id=3" class="btn btn-lg btn-block btn-primary">Contact us</a>
           </div>
         </div>
       </div>
