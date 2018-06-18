@@ -4,6 +4,8 @@ require("conexion.php");
 
 $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
+session_start();
+
 
 ?>
 
@@ -36,21 +38,29 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a>
       </nav>
-
-      <a class="btn btn-outline-primary" href="#">Sign up</a>
+      <?php 
+        if(isset($_SESSION['id'])){
+      ?>
+      <a class="btn btn-outline-primary" href="logout.php">Logout</a>
+      <?php
+      } else {
+      ?>
+      <a class="btn btn-outline-primary" href="login.php">Sign in</a>
+      <?php
+      }
+    ?>
     </div>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Pricing</h1>
       <?php
 
-      session_start();
 
       //$_SESSION['id'] = 1;
 
       //Para probar que funcione
 
-      // session_destroy();
+      //session_destroy();
 
       //Para borrar la sesion guardada
 
