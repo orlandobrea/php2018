@@ -14,38 +14,37 @@
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
   </head>
-
   <body>
     
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <form action="" class="form-signin">
+          <form method="POST" action="validador.php" class="form-signin">
             <h2 class="form-signin-heading text-center">Inicia sesión</h2>
             <hr>
             <label for="inputUser" class="sr-only">Usuario</label>
-            <input type="text" id="inputUser" class="form-control" placeholder="Ingrese su usuario" required>
+            <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Ingrese su usuario" required>
             <label for="inputPass" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPass" class="form-control" placeholder="Ingrese su contraseña" required>
+            <input type="password" id="inputPass" name="inputPass" class="form-control" placeholder="Ingrese su contraseña" required>
             <button class="btn btn-lg btn-primary text-white btn-block mt-4" type="submit">Ingresar</button>
           </form>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <h4>
+            <?php
+              session_start();
+              if (isset($_SESSION['msgError']))
+              {
+                echo $_SESSION['msgError'];
+                session_unregister($_SESSION['msgError']);
+              }
+             ?>
+          </h4>
+        </div>
+      </div>
     </div>
-
-    <?php 
-    require 'conexion.php';
-
-    // CONSULTA LA PRIMER TABLA
-    $resultado_consulta_TABPRODUCTO = mysqli_query($conexion, "select * from usuarios where id = '$id'");
-    $vector_fila = mysqli_fetch_array($resultado_consulta_TABPRODUCTO);
-
-    $tit = $vector_fila["titulo"];
-    $precio = $vector_fila["precio"];
-
-    // CONSULTA LA SEGUNDA TABLA
-        $resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP = mysqli_query($conexion, "select * from producto_caracteristica_ampliada where producto_id = '$id'");
-    ?>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
