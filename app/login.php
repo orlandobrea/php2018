@@ -17,8 +17,6 @@
 
   <body>
     
-
-    
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
@@ -35,7 +33,19 @@
       </div>
     </div>
 
+    <?php 
+    require 'conexion.php';
 
+    // CONSULTA LA PRIMER TABLA
+    $resultado_consulta_TABPRODUCTO = mysqli_query($conexion, "select * from usuarios where id = '$id'");
+    $vector_fila = mysqli_fetch_array($resultado_consulta_TABPRODUCTO);
+
+    $tit = $vector_fila["titulo"];
+    $precio = $vector_fila["precio"];
+
+    // CONSULTA LA SEGUNDA TABLA
+        $resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP = mysqli_query($conexion, "select * from producto_caracteristica_ampliada where producto_id = '$id'");
+    ?>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
