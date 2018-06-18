@@ -15,7 +15,7 @@
     if ($fetchFetch)
     {
       $_SESSION["id"] = $fetchFetch['id'];
-      header("location: pricing.php");
+      header("location: index.php");
     }
     else
     {
