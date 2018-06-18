@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pricing example for Bootstrap</title>
+    <title>Inicia sesión</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -17,50 +17,22 @@
 
   <body>
     
-    <?php 
-    require 'conexion.php';
-    $id = $_GET["id"]; 
 
-    // CONSULTA LA PRIMER TABLA
-    $resultado_consulta_TABPRODUCTO = mysqli_query($conexion, "select * from producto where id = '$id'");
-    $vector_fila = mysqli_fetch_array($resultado_consulta_TABPRODUCTO);
-
-    $tit = $vector_fila["titulo"];
-    $precio = $vector_fila["precio"];
-
-    // CONSULTA LA SEGUNDA TABLA
-        $resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP = mysqli_query($conexion, "select * from producto_caracteristica_ampliada where producto_id = '$id'");
-    ?>
     
-    <div class="container-fluid">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="row">
-          <div class="col-md-6 text-center">
-            <h1 class="display-4">
-              Paquete <?php echo $tit; ?>
-            </h1>              
-          </div>
-          <div class="col-md-6 text-center">
-            <h1 class="display-4">
-              $<?php echo $precio; ?>
-            </h1>
-          </div>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <form action="" class="form-signin">
+            <h2 class="form-signin-heading text-center">Inicia sesión</h2>
+            <hr>
+            <label for="inputUser" class="sr-only">Usuario</label>
+            <input type="text" id="inputUser" class="form-control" placeholder="Ingrese su usuario" required>
+            <label for="inputPass" class="sr-only">Contraseña</label>
+            <input type="password" id="inputPass" class="form-control" placeholder="Ingrese su contraseña" required>
+            <button class="btn btn-lg btn-primary text-white btn-block mt-4" type="submit">Ingresar</button>
+          </form>
+        </div>
       </div>
-
-      <ul style="font-size: 24px;">
-      <?php 
-        while ($r = mysqli_fetch_array($resultado_consulta_TABPRODUCTO_CARACTERISTICA_AMP)) {
-        echo "<li>";
-        echo $r["detalle"];
-        echo "</li>";
-      };
-       ?>
-     </ul>
-
-
-
-
     </div>
 
 
