@@ -31,3 +31,8 @@ body {
 	background: white;
 >>>>>>> f6d62393e918ef07a129d973e8d8521f82944d18
 }
+
+#containerLogin{
+	width: 100px;
+	margin: 0 auto;
+}

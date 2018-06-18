@@ -15,6 +15,8 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+
     <title>Pricing example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -40,15 +42,44 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Pricing</h1>
-      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+      <?php
+
+      session_start();
+
+      //$_SESSION['id'] = 1;
+
+      //Para probar que funcione
+
+      // session_destroy();
+
+      //Para borrar la sesion guardada
+
+      if(isset($_SESSION['id'])){
+         echo '<p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It is built with default Bootstrap components and utilities with little customization.</p>';
+       }
+       else{
+        echo '<p class="lead">You need to login to see the pricing options</p>';
+       }
+
+     
+
+      ?>
     </div>
 
     <div class="container">
       <div class="card-deck mb-3 text-center">
         <?php
         $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+       
+
+        if(isset($_SESSION['id'])){      
+
+
         $obtenerTablas = mysqli_query($conexion, "select * from producto");
         $cantidadTarjetas = mysqli_num_rows($obtenerTablas);
+
+
         
         for ($i=1; $i <= $cantidadTarjetas ; $i++) {
 
@@ -108,7 +139,11 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
               
           echo '  
           </div>
-        </div>'; }
+        </div>'; }}
+        else{
+
+            echo '<div id = "containerLogin"><a href="login.php" class="btn btn-lg btn-block btn-outline-primary">Login</a></div>';
+        }
         ?>
       </div>
 
