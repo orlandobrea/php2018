@@ -101,7 +101,7 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
               $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
-                echo '<a href="alta.php?id=$i" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
+                echo '<a href="alta.php?id='.$i.'" class="btn btn-lg btn-block btn-outline-primary">'.$dato['titulo_boton'].'</a>';
               }
 
       
