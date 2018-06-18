@@ -38,7 +38,7 @@
               if (isset($_SESSION['msgError']))
               {
                 echo $_SESSION['msgError'];
-                session_unregister($_SESSION['msgError']);
+                unset($_SESSION['msgError']);
               }
              ?>
           </h4>
