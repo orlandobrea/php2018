@@ -8,6 +8,14 @@ $email = $_POST['email'];
 $pwd = $_POST['password'];
 $captcha = $_POST['captcha_code'];
 
+include_once '/securimage/securimage.php';
+$securimage = new Securimage();
+if ($securimage->check($_POST['captcha_code']) == false) {
+echo "Captcha incorrecto";
+exit; // Termina la ejecución del script
+}
+else
+{
 if (!empty($_POST)) { // Viene con datos => agrego el registro
 
 	// Completar codigo de agregar registro a la base de datos
@@ -28,7 +36,6 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 
 	// ..hasta aca
 }
-
-
+}
 
 ?>
