@@ -29,6 +29,7 @@
 
             <button class="btn btn-lg btn-primary text-white btn-block mt-4" type="submit">Ingresar</button>
           </form>
+          <a href="registro.php"><button class="btn btn-lg btn-success text-white btn-block mt-4">Registrarse</button></a>
         </div>
       </div>
       <div class="row">
