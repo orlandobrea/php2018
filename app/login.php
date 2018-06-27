@@ -26,13 +26,15 @@
             <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Ingrese su usuario" required>
             <label for="inputPass" class="sr-only">Contraseña</label>
             <input type="password" id="inputPass" name="inputPass" class="form-control" placeholder="Ingrese su contraseña" required>
+
             <button class="btn btn-lg btn-primary text-white btn-block mt-4" type="submit">Ingresar</button>
           </form>
+          <a href="registro.php"><button class="btn btn-lg btn-success text-white btn-block mt-4">Registrarse</button></a>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8">
-          <h4>
+          <p class="text-center">
             <?php
               session_start();
               if (isset($_SESSION['msgError']))
@@ -41,7 +43,7 @@
                 unset($_SESSION['msgError']);
               }
              ?>
-          </h4>
+          </p>
         </div>
       </div>
     </div>
