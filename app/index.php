@@ -117,6 +117,7 @@ session_start();
   
           echo '" alt="Imagen de producto">';           
 
+
               $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
               while ($dato = mysqli_fetch_array($obtenerTablas)) {
