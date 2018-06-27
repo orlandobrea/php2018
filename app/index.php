@@ -23,6 +23,7 @@ session_start();
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
@@ -41,11 +42,11 @@ session_start();
       <?php 
         if(isset($_SESSION['id'])){
       ?>
-      <a class="btn btn-outline-primary" href="logout.php">Logout</a>
+      <a class="btn btn-outline-danger" href="logout.php"><i class="far fa-times-circle"></i> Logout</a>
       <?php
       } else {
       ?>
-      <a class="btn btn-outline-primary" href="login.php">Sign in</a>
+      <a class="btn btn-outline-primary" href="login.php"><i class="fas fa-user"></i> Sign in</a>
       <?php
       }
     ?>
