@@ -108,11 +108,11 @@ session_start();
           echo '  
           </div>
           <div class="card-body">
-          <img class="card-img-top" src="'
+          <img class="card-img-top" src="redimensionar.php?w=200&h=300&id=';
 
             $consultaURL = mysqli_query($conexion, "select * from producto where id=$i");
             while ($dato = mysqli_fetch_array($consultaURL)) 
-            {echo $dato['precIWJETIEWJTJEITio'];}
+            {echo $dato['id'];};
   
           echo '" alt="Imagen de producto">';           
 
