@@ -107,10 +107,14 @@ session_start();
             
           echo '  
           </div>
-          <div class="card-body">';
+          <div class="card-body">
+          <img class="card-img-top" src="'
 
-            
-
+            $consultaURL = mysqli_query($conexion, "select * from producto where id=$i");
+            while ($dato = mysqli_fetch_array($consultaURL)) 
+            {echo $dato['precIWJETIEWJTJEITio'];}
+  
+          echo '" alt="Imagen de producto">';           
 
               $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
 
