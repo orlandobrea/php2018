@@ -109,7 +109,7 @@ session_start();
           </div>
           <div class="card-body">';
 
-            
+              
 
 
               $obtenerTablas = mysqli_query($conexion, "select * from producto where id=$i");
