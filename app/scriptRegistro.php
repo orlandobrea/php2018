@@ -21,7 +21,7 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 
 	$usuario = new Usuario($usr,$email,$pwd);
 	try {
-		$usuario.validar_alta();
+		$usuario->validar_alta();
 		$up = $conexion->query("INSERT INTO usuarios (username, password, email) VALUES ('$usr', '$pwd', '$email')";
 		echo 'Datos enviados';
 		header ('Location: index.php');
