@@ -2,8 +2,7 @@
 session_start();
 require 'conexion.php';
 
-
-$user = $_POST['usuario'];
+$usr = $_POST['usuario'];
 $email = $_POST['email'];
 $pwd = md5($_POST['password']);
 $captcha = $_POST['captcha_code'];
@@ -20,11 +19,11 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 
 	// Completar codigo de agregar registro a la base de datos
 
-	$upload = "INSERT INTO usuarios (username, password, email) VALUES ('$user', '$pwd', '$email')";
+	$usuario = new Usuario($usr,$email,$pwd);
+	
+	$up = $conexion->query("INSERT INTO usuarios (username, password, email) VALUES ('$usr', '$pwd', '$email')";
 
-	$rs = mysqli_query($conexion, $upload);
-
-	if ($rs == true)
+	if ($up == true)
 	{
 		echo 'Datos enviados';
 		header ('Location: index.php');
@@ -33,8 +32,6 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 	{
 		echo 'Datos no enviados. ERROR!!!';
 	}
-
-	// ..hasta aca
 }
 }
 
