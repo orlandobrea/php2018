@@ -20,17 +20,13 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 	// Completar codigo de agregar registro a la base de datos
 
 	$usuario = new Usuario($usr,$email,$pwd);
-	
-	$up = $conexion->query("INSERT INTO usuarios (username, password, email) VALUES ('$usr', '$pwd', '$email')";
-
-	if ($up == true)
-	{
+	try {
+		$usuario.validar_alta();
+		$up = $conexion->query("INSERT INTO usuarios (username, password, email) VALUES ('$usr', '$pwd', '$email')";
 		echo 'Datos enviados';
 		header ('Location: index.php');
-	}
-	else
-	{
-		echo 'Datos no enviados. ERROR!!!';
+	} catch (Exception $e) {
+		echo 'Mensaje:'.$e->getMessage();
 	}
 }
 }
