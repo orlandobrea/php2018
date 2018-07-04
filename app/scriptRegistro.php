@@ -4,7 +4,7 @@ require 'conexion.php';
 
 $usr = $_POST['usuario'];
 $email = $_POST['email'];
-$pwd = md5($_POST['password']);
+$pwd = $_POST['password'];
 $captcha = $_POST['captcha_code'];
 
 include_once '/securimage/securimage.php';
@@ -19,10 +19,10 @@ if (!empty($_POST)) { // Viene con datos => agrego el registro
 
 	// Completar codigo de agregar registro a la base de datos
 
-	$usuario = new Usuario($usr,$email,$pwd);
+	$usuario = new Usuario($usr,$pwd, $email);
 	try {
 		$usuario->validar_alta();
-		$up = $conexion->query("INSERT INTO usuarios (username, password, email) VALUES ('$usr', '$pwd', '$email')";
+		$usuario->guardar();
 		echo 'Datos enviados';
 		header ('Location: index.php');
 	} catch (Exception $e) {
