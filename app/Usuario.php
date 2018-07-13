@@ -2,7 +2,6 @@
 require 'conexion.php';
 
 class Usuario {
-
 	public $username = "";
 	public $password = "";
 	public $email = "";
@@ -25,7 +24,7 @@ class Usuario {
 		$consulta = "select * from usuarios";
 		$rtaConsulta = $mysqli->query($consulta);
 		$respuesta = array();
-		while($unUsuario = $rtaConsulta->fetch_object()) {
+		while($unUsuario = $rtaConsulta->fetch_object("Usuario")) {
 			array_push($respuesta, $unUsuario);
 		}
 		return $respuesta;
@@ -45,6 +44,7 @@ class Usuario {
 		$rs = mysqli_query($mysqli, $upload);
 	}
 }
+
 
 
 ?>
