@@ -5,20 +5,24 @@ class Usuario {
 
 	public $id;
 	public $username = "";
-	public $password = "";
+	private $password = "";
 	public $email = "";
-
+/*
 	function __construct($username, $password, $email) {
 		$this->username = $username;
 		$this->password = $password;
 		$this->email = $email;
+	}
+*/
+	function setPassword($newPassword) {
+		$this->password = md5($newPassword);
 	}
 
 	function ObtenerUno($id){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 		$consulta = "select * from usuarios where id=$id";
 		$rtaConsulta = $mysqli->query($consulta);
-		$resp = $rtaConsulta->fetch_object();
+		$resp = $rtaConsulta->fetch_object("Usuario");
 		return $resp;
 	}
 
@@ -44,7 +48,7 @@ class Usuario {
 	function guardar(){
 		$this->validar_alta();
 		$usuario = $this->username;
-		$contrasenia = md5($this->password);
+		$contrasenia = $this->password;
 		$correo = $this->email;
 
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -59,20 +63,20 @@ class Usuario {
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 		$borrado = "DELETE from usuarios where id=".$this->id;
 		$rs = mysqli_query($mysqli, $borrado);
-		echo $borrado;
 	}
 
 	function modificar()
 	{
-		$newUser = $this->usuario;
-		$newPwd = $this->contrasenia;
+		$newUser = $this->username;
+		$newPwd = $this->password;
 		$newEmail = $this->email;
 
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$modif = "UPDATE from usuarios where id=".$this->id."(username, password, email) VALUES ('$newUser','$newPwd', '$newEmail')";
+		$modif = "UPDATE usuarios set username='$newUser', password='$newPwd', email='$newEmail' where id=".$this->id;
 		$rs = mysqli_query($mysqli, $modif);
 	}
 
 }
+
 
 ?>
