@@ -2,6 +2,7 @@
 require 'conexion.php';
 
 class Usuario {
+	public $id;
 	public $username = "";
 	public $password = "";
 	public $email = "";
@@ -10,6 +11,14 @@ class Usuario {
 		$this->username = $username;
 		$this->password = $password;
 		$this->email = $email;
+	}
+
+	function ObtenerUno($id){
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$consulta = "select * from usuarios where id=$id";
+		$rtaConsulta = $mysqli->query($consulta);
+		$resp = $rtaConsulta->fetch_object();
+		return $resp;
 	}
 
 	function validar_alta() {
@@ -44,7 +53,5 @@ class Usuario {
 		$rs = mysqli_query($mysqli, $upload);
 	}
 }
-
-
 
 ?>
