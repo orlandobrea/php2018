@@ -1,63 +1,42 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<?php
+require_once '/Twig/Autoloader.php';
 
-    <title>Inicia sesión</title>
+Twig_Autoloader::register();
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+$loader = new Twig_Loader_Filesystem('templates');
+$twig = new Twig_Environment($loader, array('auto_reload '=>true));
 
-    <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet">
-  </head>
-  <body>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <form method="POST" action="validador.php" class="form-signin">
-            <h2 class="form-signin-heading text-center">Inicia sesión</h2>
-            <hr>
-            <label for="inputUser" class="sr-only">Usuario</label>
-            <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Ingrese su usuario" required>
-            <label for="inputPass" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPass" name="inputPass" class="form-control" placeholder="Ingrese su contraseña" required>
+session_start();
 
-            <button class="btn btn-lg btn-primary text-white btn-block mt-4" type="submit">Ingresar</button>
-          </form>
-          <a href="registro.php"><button class="btn btn-lg btn-success text-white btn-block mt-4">Registrarse</button></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-8">
-          <p class="text-center">
-            <?php
-              session_start();
-              if (isset($_SESSION['msgError']))
-              {
-                echo $_SESSION['msgError'];
-                unset($_SESSION['msgError']);
-              }
-             ?>
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>
-      Holder.addTheme('thumb', {
-        bg: '#55595c',
-        fg: '#eceeef',
-        text: 'Thumbnail'
-      });
-    </script>
-  </body>
-</html>
+if (!empty($_POST)) {
+    require 'conexion.php';
+
+    $user = $_POST['inputUser'];
+    $pass = $_POST['inputPass'];
+    $pass = md5($pass);
+
+
+    // CONSULTA LA PRIMER TABLA
+    $r = mysqli_query($conexion, "select * from usuarios where username = '$user' and password = '$pass'");
+    $fetchFetch = mysqli_fetch_array($r);
+
+    if ($fetchFetch)
+    {
+      $_SESSION["id"] = $fetchFetch['id'];
+      header("location: index.php");
+    }
+    else
+    {
+      $_SESSION["msgError"] = "Ingresaste un usuario o contraseña erróneos.";
+//      header("location: login.php");
+    }
+}
+
+
+$parametros = array('error' => @$_SESSION['msgError'], 'post' => $_POST);
+
+echo $twig->render('login.html', $parametros);
+
+?>
+
