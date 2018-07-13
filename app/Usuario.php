@@ -3,6 +3,7 @@ require 'conexion.php';
 
 class Usuario {
 
+	public $id = "";
 	public $username = "";
 	public $password = "";
 	public $email = "";
@@ -44,6 +45,26 @@ class Usuario {
 		$upload = "INSERT INTO usuarios (username, password, email) VALUES ('$usuario', '$contrasenia', '$correo')";
 		$rs = mysqli_query($mysqli, $upload);
 	}
+
+	function borrar()
+	{
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$borrado = "DELETE from usuarios where id=".$this->id;
+		$rs = mysqli_query($mysqli, $borrado);
+		echo $borrado;
+	}
+
+	function modificar()
+	{
+		$newUser = $this->usuario;
+		$newPwd = $this->contrasenia;
+		$newEmail = $this->email;
+
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$modif = "UPDATE from usuarios where id=".$this->id."(username, password, email) VALUES ('$newUser','$newPwd', '$newEmail')";
+		$rs = mysqli_query($mysqli, $modif);
+	}
+
 }
 
 
