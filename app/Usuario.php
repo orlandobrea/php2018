@@ -12,20 +12,25 @@ class Usuario {
 		$this->password = $password;
 		$this->email = $email;
 	}
-	/*
-	function validar_alta($username, $password, $email) {
-		if ($username == "" || $password == "" || $email == "") {
-			throw new Exception("No puede haber datos vacíos");
-		}
-		
-	}	
-*/
+
 	function validar_alta() {
 		if ($this->username == "" || $this->password == "" || $this->email == "") {
 			throw new Exception("No puede haber datos vacíos");
 		}
 		
 	}
+
+	static function listar() {
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$consulta = "select * from usuarios";
+		$rtaConsulta = $mysqli->query($consulta);
+		$respuesta = array();
+		while($unUsuario = $rtaConsulta->fetch_object()) {
+			array_push($respuesta, $unUsuario);
+		}
+		return $respuesta;
+	}
+
 
 	function guardar(){
 		$this->validar_alta();
@@ -40,5 +45,6 @@ class Usuario {
 		$rs = mysqli_query($mysqli, $upload);
 	}
 }
+
 
 ?>
